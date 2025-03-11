@@ -44,9 +44,9 @@ if process_button and url1 and url2:
     
     #Generate embeddings
     embeddings = OpenAIEmbeddings()
-    # vectorstore = FAISS.from_documents(split_docs, embeddings)
-    # Create Chroma vectorstore (persistent storage in "./chroma_db")
-    vectorstore = Chroma.from_documents(split_docs, embeddings, persist_directory="./chroma_db")
+    vectorstore = FAISS.from_documents(split_docs, embeddings)
+    # Create Chroma vectorstore for better performance
+    # vectorstore = Chroma.from_documents(split_docs, embeddings, persist_directory="./chroma_db")
     retriever = vectorstore.as_retriever()
     
     # Give the system prompt
