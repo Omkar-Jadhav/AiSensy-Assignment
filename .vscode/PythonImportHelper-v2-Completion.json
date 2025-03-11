@@ -1,0 +1,155 @@
+[
+    {
+        "label": "streamlit",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "streamlit",
+        "description": "streamlit",
+        "detail": "streamlit",
+        "documentation": {}
+    },
+    {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
+        "label": "BeautifulSoup",
+        "importPath": "bs4",
+        "description": "bs4",
+        "isExtraImport": true,
+        "detail": "bs4",
+        "documentation": {}
+    },
+    {
+        "label": "RecursiveCharacterTextSplitter",
+        "importPath": "langchain.text_splitter",
+        "description": "langchain.text_splitter",
+        "isExtraImport": true,
+        "detail": "langchain.text_splitter",
+        "documentation": {}
+    },
+    {
+        "label": "FAISS",
+        "importPath": "langchain_community.vectorstores",
+        "description": "langchain_community.vectorstores",
+        "isExtraImport": true,
+        "detail": "langchain_community.vectorstores",
+        "documentation": {}
+    },
+    {
+        "label": "Chroma",
+        "importPath": "langchain_community.vectorstores",
+        "description": "langchain_community.vectorstores",
+        "isExtraImport": true,
+        "detail": "langchain_community.vectorstores",
+        "documentation": {}
+    },
+    {
+        "label": "OpenAIEmbeddings",
+        "importPath": "langchain_openai",
+        "description": "langchain_openai",
+        "isExtraImport": true,
+        "detail": "langchain_openai",
+        "documentation": {}
+    },
+    {
+        "label": "ChatOpenAI",
+        "importPath": "langchain_openai",
+        "description": "langchain_openai",
+        "isExtraImport": true,
+        "detail": "langchain_openai",
+        "documentation": {}
+    },
+    {
+        "label": "RetrievalQA",
+        "importPath": "langchain.chains",
+        "description": "langchain.chains",
+        "isExtraImport": true,
+        "detail": "langchain.chains",
+        "documentation": {}
+    },
+    {
+        "label": "Document",
+        "importPath": "langchain.docstore.document",
+        "description": "langchain.docstore.document",
+        "isExtraImport": true,
+        "detail": "langchain.docstore.document",
+        "documentation": {}
+    },
+    {
+        "label": "PromptTemplate",
+        "importPath": "langchain.prompts",
+        "description": "langchain.prompts",
+        "isExtraImport": true,
+        "detail": "langchain.prompts",
+        "documentation": {}
+    },
+    {
+        "label": "openai",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "openai",
+        "description": "openai",
+        "detail": "openai",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "extract_text_from_url",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def extract_text_from_url(url):\n    try:\n        response = requests.get(url)\n        response.raise_for_status()\n        soup = BeautifulSoup(response.text, \"html.parser\")\n        return soup.get_text()\n    except Exception as e:\n        return f\"Error fetching {url}: {str(e)}\"\n# Streamlit UI\nst.title(\"RAG-based Q&A from URLs\")",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "openai.api_key",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "openai.api_key = os.getenv(\"OPENAI_API_KEY\")\n# Function to extract text from URL\ndef extract_text_from_url(url):\n    try:\n        response = requests.get(url)\n        response.raise_for_status()\n        soup = BeautifulSoup(response.text, \"html.parser\")\n        return soup.get_text()\n    except Exception as e:\n        return f\"Error fetching {url}: {str(e)}\"",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "url1",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "url1 = st.text_input(\"Enter first URL:\")\nurl2 = st.text_input(\"Enter second URL:\")\nprocess_button = st.button(\"Process URLs\")\nif process_button and url1 and url2:\n    st.write(\"Fetching and processing content...\")\n    # Extract content from URLs\n    text1 = extract_text_from_url(url1)\n    text2 = extract_text_from_url(url2)\n    #Create chunks of the contents\n    documents = [Document(page_content=text1), Document(page_content=text2)]",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "url2",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "url2 = st.text_input(\"Enter second URL:\")\nprocess_button = st.button(\"Process URLs\")\nif process_button and url1 and url2:\n    st.write(\"Fetching and processing content...\")\n    # Extract content from URLs\n    text1 = extract_text_from_url(url1)\n    text2 = extract_text_from_url(url2)\n    #Create chunks of the contents\n    documents = [Document(page_content=text1), Document(page_content=text2)]\n    text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "process_button",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "process_button = st.button(\"Process URLs\")\nif process_button and url1 and url2:\n    st.write(\"Fetching and processing content...\")\n    # Extract content from URLs\n    text1 = extract_text_from_url(url1)\n    text2 = extract_text_from_url(url2)\n    #Create chunks of the contents\n    documents = [Document(page_content=text1), Document(page_content=text2)]\n    text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)\n    split_docs = text_splitter.split_documents(documents)",
+        "detail": "app",
+        "documentation": {}
+    }
+]

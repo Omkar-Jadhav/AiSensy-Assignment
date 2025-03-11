@@ -1,0 +1,6 @@
+chroma_db/chroma.sqlite3
+chroma_db/fba317d3-dd12-4c2f-8a26-a7105469a000/data_level0.bin
+chroma_db/fba317d3-dd12-4c2f-8a26-a7105469a000/link_lists.bin
+chroma_db/fba317d3-dd12-4c2f-8a26-a7105469a000/length.bin
+chroma_db/fba317d3-dd12-4c2f-8a26-a7105469a000/header.bin
+.env

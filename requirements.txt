@@ -1,0 +1,8 @@
+streamlit
+requests
+bs4
+langchain
+langchain_community
+langchain-openai
+faiss-cpu
+chromadb
