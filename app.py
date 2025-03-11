@@ -14,6 +14,10 @@ import os
 # Set OpenAI API Key
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
+if openai.api_key is None:
+    st.error("OpenAI API key is missing! Please set it in Streamlit Secrets.")
+else:
+    st.success("OpenAI API Key Loaded Successfully")
 # Function to extract text from URL
 def extract_text_from_url(url):
     try:
