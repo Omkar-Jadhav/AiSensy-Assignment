@@ -121,7 +121,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "openai.api_key = os.getenv(\"OPENAI_API_KEY\")\nif openai.api_key is None:\n    st.error(\"OpenAI API key is missing! Please set it in Streamlit Secrets.\")\nelse:\n    st.success(\"OpenAI API Key Loaded Successfully\")\n# Function to extract text from URL\ndef extract_text_from_url(url):\n    try:\n        response = requests.get(url)\n        response.raise_for_status()",
+        "peekOfCode": "openai.api_key = os.getenv(\"OPENAI_API_KEY\")\n# Function to extract text from URL\ndef extract_text_from_url(url):\n    try:\n        response = requests.get(url)\n        response.raise_for_status()\n        soup = BeautifulSoup(response.text, \"html.parser\")\n        return soup.get_text()\n    except Exception as e:\n        return f\"Error fetching {url}: {str(e)}\"",
         "detail": "app",
         "documentation": {}
     },
